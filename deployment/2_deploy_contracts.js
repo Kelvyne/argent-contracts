@@ -70,7 +70,7 @@ const deploy = async (network) => {
   const wethJoinAddress = await ScdMcdMigrationWrapper.wethJoin();
   const addCollateralTransaction = await MakerRegistryWrapper.contract.addCollateral(wethJoinAddress, { gasPrice });
   await MakerRegistryWrapper.verboseWaitForTransaction(addCollateralTransaction, `Adding join adapter ${wethJoinAddress} to the MakerRegistry`);
-  const changeMakerRegistryOwnerTx = await MakerRegistryWrapper.contract.changeOwner(newConfig.contracts.MultiSigWallet, { gasPrice });
+  const changeMakerRegistryOwnerTx = await MakerRegistryWrapper.contract.changeOwner(MultiSigWrapper.contractAddress, { gasPrice });
   await MakerRegistryWrapper.verboseWaitForTransaction(changeMakerRegistryOwnerTx, "Set the MultiSig as the owner of the MakerRegistry");
 
   // /////////////////////////////////////////////////

@@ -76,6 +76,7 @@ const deploy = async (network) => {
     configurator.updateENSRegistry(address);
   }
 
+  console.log(config);
   if (config.defi.paraswap.deployOwn) {
     const { paraswap, kyberAdapter } = await deployParaswap(deployer);
     configurator.updateParaswap(paraswap, { Kyber: kyberAdapter });
